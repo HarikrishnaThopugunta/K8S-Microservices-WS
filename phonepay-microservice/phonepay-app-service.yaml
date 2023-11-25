@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  creationTimestamp: "2023-11-25T22:19:39Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: phonepay-microservice
+  name: phonepay-microservice
+  namespace: default
+  resourceVersion: "4555044"
+  uid: d18b78b9-d948-4af0-ae80-abb2ad7c6e85
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 34.118.232.79
+  clusterIPs:
+  - 34.118.232.79
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 32752
+    port: 9066
+    protocol: TCP
+    targetPort: 9066
+  selector:
+    app: phonepay-microservice
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 34.132.62.57
